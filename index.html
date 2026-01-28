@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>FamJam Board</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">🗂️</div>
+        <div>
+          <div class="title">FamJam Board</div>
+          <div class="subtitle">A shared family task desk</div>
+        </div>
+      </div>
+
+      <div class="boardbox">
+        <label class="label">Board Code</label>
+        <div class="row">
+          <input id="boardId" class="input" placeholder="e.g. WHITE-FAM" />
+          <button id="joinBtn" class="btn">Join</button>
+        </div>
+        <div class="hint">Everyone uses the same Board Code to sync.</div>
+      </div>
+
+      <div class="userbox">
+        <label class="label">Your Name</label>
+        <input id="displayName" class="input" placeholder="e.g. Stuart" />
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="panel">
+        <h2>Create a task</h2>
+
+        <form id="taskForm" class="form">
+          <div class="grid">
+            <div class="field">
+              <label class="label">Task</label>
+              <input id="taskTitle" class="input" required maxlength="90" placeholder="Clean kitchen, phone dentist, etc." />
+            </div>
+
+            <div class="field">
+              <label class="label">Assign to</label>
+              <input id="assignee" class="input" placeholder="e.g. Me / Wife / Son / Everyone" />
+            </div>
+
+            <div class="field">
+              <label class="label">Due</label>
+              <input id="dueDate" class="input" type="date" />
+            </div>
+
+            <div class="field">
+              <label class="label">Priority</label>
+              <select id="priority" class="input">
+                <option value="low">Low</option>
+                <option value="med" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row gap">
+            <button class="btn primary" type="submit">Add Task</button>
+            <button class="btn ghost" type="button" id="clearDoneBtn">Clear Done</button>
+          </div>
+
+          <div class="note" id="statusNote"></div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="panelHead">
+          <h2>Desk view</h2>
+          <div class="filters">
+            <select id="statusFilter" class="input small">
+              <option value="all" selected>All</option>
+              <option value="open">Open</option>
+              <option value="doing">Doing</option>
+              <option value="done">Done</option>
+            </select>
+
+            <select id="sortBy" class="input small">
+              <option value="createdAt" selected>Sort: New</option>
+              <option value="dueDate">Sort: Due</option>
+              <option value="priority">Sort: Priority</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="taskList" class="taskList">
+          <div class="empty">Join a board to start syncing 🧲</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span id="footerInfo">Not connected</span>
+    </footer>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
